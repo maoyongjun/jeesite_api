@@ -1,0 +1,157 @@
+<% layout('/layouts/default.html', {title: 'api访问记录管理', libs: ['validate']}){ %>
+<div class="main-content">
+	<div class="box box-main">
+		<div class="box-header with-border">
+			<div class="box-title">
+				<i class="fa icon-note"></i> ${text(apiLog.isNewRecord ? '新增api访问记录' : '编辑api访问记录')}
+			</div>
+			<div class="box-tools pull-right">
+				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+			</div>
+		</div>
+		<#form:form id="inputForm" model="${apiLog}" action="${ctx}/api/apiLog/save" method="post" class="form-horizontal">
+			<div class="box-body">
+				<div class="form-unit">${text('基本信息')}</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="control-label col-sm-4" title="">
+								<span class="required ">*</span> ${text('访问记录的id')}：<i class="fa icon-question hide"></i></label>
+							<div class="col-sm-8">
+								<#form:hidden path="isNewRecord"/>
+							<#form:input path="id" maxlength="100" readonly="${!apiLog.isNewRecord}" class="form-control required"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="control-label col-sm-4" title="">
+								<span class="required hide">*</span> ${text('API的编号')}：<i class="fa icon-question hide"></i></label>
+							<div class="col-sm-8">
+								<#form:input path="apiCode" maxlength="100" class="form-control"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="control-label col-sm-4" title="">
+								<span class="required hide">*</span> ${text('API的名称')}：<i class="fa icon-question hide"></i></label>
+							<div class="col-sm-8">
+								<#form:input path="apiName" maxlength="200" class="form-control"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="control-label col-sm-4" title="">
+								<span class="required hide">*</span> ${text('请求返回的状态码，例如 200 404 500')}：<i class="fa icon-question hide"></i></label>
+							<div class="col-sm-8">
+								<#form:input path="responseCode" maxlength="50" class="form-control"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="control-label col-sm-4" title="">
+								<span class="required hide">*</span> ${text('访问进入的时间')}：<i class="fa icon-question hide"></i></label>
+							<div class="col-sm-8">
+								<#form:input path="inDate" readonly="true" maxlength="20" class="form-control laydate"
+									dataFormat="datetime" data-type="datetime" data-format="yyyy-MM-dd HH:mm"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="control-label col-sm-4" title="">
+								<span class="required hide">*</span> ${text('访问返回的时间')}：<i class="fa icon-question hide"></i></label>
+							<div class="col-sm-8">
+								<#form:input path="outDate" readonly="true" maxlength="20" class="form-control laydate"
+									dataFormat="datetime" data-type="datetime" data-format="yyyy-MM-dd HH:mm"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="control-label col-sm-4" title="">
+								<span class="required hide">*</span> ${text('消耗的时长')}：<i class="fa icon-question hide"></i></label>
+							<div class="col-sm-8">
+								<#form:input path="takeTime" class="form-control"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="control-label col-sm-4" title="">
+								<span class="required hide">*</span> ${text('数据为主动获取 还是被动接收 0')}：<i class="fa icon-question hide"></i></label>
+							<div class="col-sm-8">
+								<#form:input path="isDataPullStatus" maxlength="11" class="form-control digits"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="control-label col-sm-4" title="">
+								<span class="required hide">*</span> ${text('请求的数据格式，例如xml、JSON')}：<i class="fa icon-question hide"></i></label>
+							<div class="col-sm-8">
+								<#form:input path="datatype" maxlength="50" class="form-control"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="control-label col-sm-4" title="">
+								<span class="required hide">*</span> ${text('请求的数据')}：<i class="fa icon-question hide"></i></label>
+							<div class="col-sm-8">
+								<#form:input path="requestData" maxlength="8000" class="form-control"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="control-label col-sm-4" title="">
+								<span class="required hide">*</span> ${text('返回的数据')}：<i class="fa icon-question hide"></i></label>
+							<div class="col-sm-8">
+								<#form:input path="responseData" maxlength="8000" class="form-control"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="box-footer">
+				<div class="row">
+					<div class="col-sm-offset-2 col-sm-10">
+						<% if (hasPermi('api:apiLog:edit')){ %>
+							<button type="submit" class="btn btn-sm btn-primary" id="btnSubmit"><i class="fa fa-check"></i> ${text('保 存')}</button>&nbsp;
+						<% } %>
+						<button type="button" class="btn btn-sm btn-default" id="btnCancel" onclick="js.closeCurrentTabPage()"><i class="fa fa-reply-all"></i> ${text('关 闭')}</button>
+					</div>
+				</div>
+			</div>
+		</#form:form>
+	</div>
+</div>
+<% } %>
+<script>
+$("#inputForm").validate({
+	submitHandler: function(form){
+		js.ajaxSubmitForm($(form), function(data){
+			js.showMessage(data.message);
+			if(data.result == Global.TRUE){
+				js.closeCurrentTabPage(function(contentWindow){
+					contentWindow.page();
+				});
+			}
+		}, "json");
+    }
+});
+</script>
