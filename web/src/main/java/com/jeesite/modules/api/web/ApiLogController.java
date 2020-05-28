@@ -25,7 +25,7 @@ import com.jeesite.modules.api.service.ApiLogService;
 /**
  * api访问记录Controller
  * @author myj
- * @version 2020-05-27
+ * @version 2020-05-28
  */
 @Controller
 @RequestMapping(value = "${adminPath}/api/apiLog")

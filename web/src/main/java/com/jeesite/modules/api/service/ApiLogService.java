@@ -16,7 +16,7 @@ import com.jeesite.modules.api.dao.ApiLogDao;
 /**
  * api访问记录Service
  * @author myj
- * @version 2020-05-27
+ * @version 2020-05-28
  */
 @Service
 @Transactional(readOnly=true)

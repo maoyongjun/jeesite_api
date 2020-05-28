@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jeesite.common.aspect.APIRecord;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -56,6 +57,7 @@ public class PostController extends BaseController {
 	@RequiresPermissions("sys:post:view")
 	@RequestMapping(value = {"listData"})
 	@ResponseBody
+	@APIRecord(name = "岗位管理")
 	public Page<Post> listData(Post post, HttpServletRequest request, HttpServletResponse response) {
 		post.setPage(new Page<>(request, response));
 		Page<Post> page = postService.findPage(post); 
