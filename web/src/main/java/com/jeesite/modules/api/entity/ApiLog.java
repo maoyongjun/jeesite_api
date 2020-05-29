@@ -19,7 +19,7 @@ import com.jeesite.common.mybatis.mapper.query.QueryType;
 /**
  * api访问记录Entity
  * @author myj
- * @version 2020-05-28
+ * @version 2020-05-29
  */
 @Table(name="api_log", alias="a", columns={
 		@Column(name="id", attrName="id", label="id", isPK=true),

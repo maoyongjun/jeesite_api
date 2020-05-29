@@ -53,10 +53,9 @@
 $('#dataGrid').dataGrid({
 	searchForm: $("#searchForm"),
 	columnModel: [
-		{header:'${text("id")}', name:'id', index:'a.id', width:150, align:"left", frozen:true, formatter: function(val, obj, row, act){
+		{header:'${text("编号")}', name:'apiCode', index:'a.api_code', width:150, align:"left", frozen:true, formatter: function(val, obj, row, act){
 			return '<a href="${ctx}/api/apiLogTotal/form?id='+row.id+'" class="btnList" data-title="${text("编辑api访问次数统计表")}">'+(val||row.id)+'</a>';
 		}},
-		{header:'${text("编号")}', name:'apiCode', index:'a.api_code', width:150, align:"left"},
 		{header:'${text("名称")}', name:'apiName', index:'a.api_name', width:150, align:"left"},
 		{header:'${text("访问成功次数")}', name:'successCount', index:'a.success_count', width:150, align:"center"},
 		{header:'${text("访问失败次数")}', name:'failCount', index:'a.fail_count', width:150, align:"center"},

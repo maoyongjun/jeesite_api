@@ -16,7 +16,7 @@ import com.jeesite.modules.api.dao.ApiRegisterDao;
 /**
  * api注册记录Service
  * @author myj
- * @version 2020-05-28
+ * @version 2020-05-29
  */
 @Service
 @Transactional(readOnly=true)

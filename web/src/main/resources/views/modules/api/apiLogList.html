@@ -81,10 +81,9 @@
 $('#dataGrid').dataGrid({
 	searchForm: $("#searchForm"),
 	columnModel: [
-		{header:'${text("id")}', name:'id', index:'a.id', width:150, align:"left", frozen:true, formatter: function(val, obj, row, act){
+		{header:'${text("编号")}', name:'apiCode', index:'a.api_code', width:150, align:"left", frozen:true, formatter: function(val, obj, row, act){
 			return '<a href="${ctx}/api/apiLog/form?id='+row.id+'" class="btnList" data-title="${text("编辑api访问记录")}">'+(val||row.id)+'</a>';
 		}},
-		{header:'${text("编号")}', name:'apiCode', index:'a.api_code', width:150, align:"left"},
 		{header:'${text("名称")}', name:'apiName', index:'a.api_name', width:150, align:"left"},
 		{header:'${text("状态码")}', name:'responseCode', index:'a.response_code', width:150, align:"center", formatter: function(val, obj, row, act){
 			return js.getDictLabel(${@DictUtils.getDictListJson('api_log_sendCode')}, val, '${text("未知")}', true);

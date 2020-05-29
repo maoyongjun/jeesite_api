@@ -3,6 +3,7 @@
  */
 package com.jeesite.modules.api.entity;
 
+import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 import java.util.Date;
 import com.jeesite.common.mybatis.annotation.JoinTable;
@@ -17,7 +18,7 @@ import com.jeesite.common.mybatis.mapper.query.QueryType;
 /**
  * api注册记录Entity
  * @author myj
- * @version 2020-05-28
+ * @version 2020-05-29
  */
 @Table(name="api_register", alias="a", columns={
 		@Column(name="id", attrName="id", label="id", isPK=true),
@@ -25,7 +26,6 @@ import com.jeesite.common.mybatis.mapper.query.QueryType;
 		@Column(name="api_name", attrName="apiName", label="名称", queryType=QueryType.LIKE),
 		@Column(name="api_url", attrName="apiUrl", label="地址"),
 		@Column(name="api_desc", attrName="apiDesc", label="描述"),
-		@Column(name="cron", attrName="cron", label="表达式"),
 		@Column(name="create_by", attrName="createBy", label="创建人", isUpdate=false, isQuery=false),
 		@Column(name="register_time", attrName="registerTime", label="注册时间", isQuery=false),
 		@Column(name="update_time", attrName="updateTime", label="修改时间", isQuery=false),
@@ -39,7 +39,6 @@ public class ApiRegister extends DataEntity<ApiRegister> {
 	private String apiName;		// 名称
 	private String apiUrl;		// 地址
 	private String apiDesc;		// 描述
-	private String cron;		// 表达式
 	private Date registerTime;		// 注册时间
 	private Date updateTime;		// 修改时间
 	private Long apiType;		// 调用方式
@@ -52,6 +51,7 @@ public class ApiRegister extends DataEntity<ApiRegister> {
 		super(id);
 	}
 	
+	@NotBlank(message="编号不能为空")
 	@Length(min=0, max=100, message="编号长度不能超过 100 个字符")
 	public String getApiCode() {
 		return apiCode;
@@ -86,15 +86,6 @@ public class ApiRegister extends DataEntity<ApiRegister> {
 
 	public void setApiDesc(String apiDesc) {
 		this.apiDesc = apiDesc;
-	}
-	
-	@Length(min=0, max=100, message="表达式长度不能超过 100 个字符")
-	public String getCron() {
-		return cron;
-	}
-
-	public void setCron(String cron) {
-		this.cron = cron;
 	}
 	
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

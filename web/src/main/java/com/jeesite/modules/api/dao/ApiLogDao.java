@@ -10,7 +10,7 @@ import com.jeesite.modules.api.entity.ApiLog;
 /**
  * api访问记录DAO接口
  * @author myj
- * @version 2020-05-28
+ * @version 2020-05-29
  */
 @MyBatisDao
 public interface ApiLogDao extends CrudDao<ApiLog> {

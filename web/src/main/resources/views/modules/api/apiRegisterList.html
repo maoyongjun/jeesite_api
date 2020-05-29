@@ -40,12 +40,6 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label">${text('表达式')}：</label>
-					<div class="control-inline">
-						<#form:input path="cron" maxlength="100" class="form-control width-120"/>
-					</div>
-				</div>
-				<div class="form-group">
 					<label class="control-label">${text('调用方式')}：</label>
 					<div class="control-inline width-120">
 						<#form:select path="apiType" dictType="api_log_sendType" blankOption="true" class="form-control"/>
@@ -67,14 +61,12 @@
 $('#dataGrid').dataGrid({
 	searchForm: $("#searchForm"),
 	columnModel: [
-		{header:'${text("id")}', name:'id', index:'a.id', width:150, align:"left", frozen:true, formatter: function(val, obj, row, act){
+		{header:'${text("编号")}', name:'apiCode', index:'a.api_code', width:150, align:"left", frozen:true, formatter: function(val, obj, row, act){
 			return '<a href="${ctx}/api/apiRegister/form?id='+row.id+'" class="btnList" data-title="${text("编辑api注册记录")}">'+(val||row.id)+'</a>';
 		}},
-		{header:'${text("编号")}', name:'apiCode', index:'a.api_code', width:150, align:"left"},
 		{header:'${text("名称")}', name:'apiName', index:'a.api_name', width:150, align:"left"},
 		{header:'${text("地址")}', name:'apiUrl', index:'a.api_url', width:150, align:"left"},
 		{header:'${text("描述")}', name:'apiDesc', index:'a.api_desc', width:150, align:"left"},
-		{header:'${text("表达式")}', name:'cron', index:'a.cron', width:150, align:"left"},
 		{header:'${text("注册时间")}', name:'registerTime', index:'a.register_time', width:150, align:"center"},
 		{header:'${text("修改时间")}', name:'updateTime', index:'a.update_time', width:150, align:"center"},
 		{header:'${text("调用方式")}', name:'apiType', index:'a.api_type', width:150, align:"center", formatter: function(val, obj, row, act){

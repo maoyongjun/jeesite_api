@@ -6,6 +6,7 @@ package com.jeesite.modules.sys.web;
 import java.util.List;
 import java.util.Map;
 
+import com.jeesite.common.aspect.APIRecord;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -80,6 +81,7 @@ public class OfficeController extends BaseController {
 	@RequiresPermissions("sys:office:view")
 	@RequestMapping(value = "listData")
 	@ResponseBody
+	@APIRecord(name="机构数据")
 	public List<Office> listData(Office office, String ctrlPermi) {
 		if (StringUtils.isBlank(office.getParentCode())){
 			office.setParentCode(Office.ROOT_CODE);

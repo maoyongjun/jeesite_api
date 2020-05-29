@@ -10,7 +10,7 @@ import com.jeesite.modules.api.entity.ApiLogTotal;
 /**
  * api访问次数统计表DAO接口
  * @author myj
- * @version 2020-05-28
+ * @version 2020-05-29
  */
 @MyBatisDao
 public interface ApiLogTotalDao extends CrudDao<ApiLogTotal> {

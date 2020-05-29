@@ -39,7 +39,7 @@ jdbc:
   # Mysql 数据库配置
   type: mysql
   driver: com.mysql.jdbc.Driver
-  url: jdbc:mysql://127.0.0.1:3306/jeesite?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+  url: jdbc:mysql://127.0.0.1:3306/jeesite3?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
   username: jeesite
   password: jeesite
   testSql: SELECT 1
@@ -283,47 +283,47 @@ logging:
 #  defaultTimeZone: GMT+08:00
   
 # 任务调度（个人版）
-#job:
-#  enabled: false
-#
-#  # 是否自动启动任务调度（可关闭）
-#  autoStartup: true
-#
-#  # 任务调度启动延迟设置（单位：秒）（建议设置项目启动完成后的时间）
-#  startupDelay: 60
-#  
-#  # 任务调度线程池
-#  threadPool:
-#    threadCount: 10
-#    threadPriority: 5
-#
-#  # 调度设置，集群中每一个实例都必须使用相同的instanceName名称 （区分特定的调度器实例）
-#  # 每一个instanceId必须不同，设置AUTO则自动生成
-#  scheduler:
-#    instanceName: JeeSiteScheduler
-#    instanceId: AUTO
-#
-#  # 任务调度集群设置
-#  jobStore:
-#    isClustered: true
-#    dataSourceName: job
-#    clusterCheckinInterval: 1000
-#
-#  # 调度日志
-#  log:
-#    # 计划调度日志
-#    scheduler:
-#      enabled: true
-#      # 是否只保存错误日志
-#      errorLevel: true
-#    # 任务执行日志
-#    jobDetail:
-#      enabled: true
-#      # 是否只保存错误日志
-#      errorLevel: true
-#    # 计划触发日志
-#    trigger:
-#      enabled: false
+job:
+  enabled: true
+
+  # 是否自动启动任务调度（可关闭）
+  autoStartup: true
+
+  # 任务调度启动延迟设置（单位：秒）（建议设置项目启动完成后的时间）
+  startupDelay: 60
+
+  # 任务调度线程池
+  threadPool:
+    threadCount: 10
+    threadPriority: 5
+
+  # 调度设置，集群中每一个实例都必须使用相同的instanceName名称 （区分特定的调度器实例）
+  # 每一个instanceId必须不同，设置AUTO则自动生成
+  scheduler:
+    instanceName: JeeSiteScheduler
+    instanceId: AUTO
+
+  # 任务调度集群设置
+  jobStore:
+    isClustered: true
+    dataSourceName: job
+    clusterCheckinInterval: 1000
+
+  # 调度日志
+  log:
+    # 计划调度日志
+    scheduler:
+      enabled: true
+      # 是否只保存错误日志
+      errorLevel: true
+    # 任务执行日志
+    jobDetail:
+      enabled: true
+      # 是否只保存错误日志
+      errorLevel: true
+    # 计划触发日志
+    trigger:
+      enabled: false
 
 # 代码生成
 #gen:
@@ -340,20 +340,20 @@ logging:
 # Shiro 相关配置
 shiro:
 
-#  #索引页路径
+  #索引页路径
 #  defaultPath: ${shiro.loginUrl}
 #
 #  # 登录相关设置
 #  loginUrl: ${adminPath}/login
 #  logoutUrl: ${shiro.loginUrl}
 #  successUrl: ${adminPath}/index
-#
-##  # Apereo CAS 相关配置（个人版）
-##  casServerUrl: http://127.0.0.1:8981/cas
-##  casClientUrl: http://127.0.0.1:8980/js
-##  loginUrl: ${shiro.casServerUrl}?service=${shiro.casClientUrl}${adminPath}/login-cas
-##  logoutUrl: ${shiro.casServerUrl}/logout?service=${shiro.loginUrl}
-##  successUrl: ${shiro.casClientUrl}${adminPath}/index
+
+  # Apereo CAS 相关配置（个人版）
+  casServerUrl: http://localhost:8080/cas-server
+  casClientUrl: http://127.0.0.1:8980/js
+  loginUrl: ${shiro.casServerUrl}?service=${shiro.casClientUrl}${adminPath}/login-cas
+  logoutUrl: ${shiro.casServerUrl}/logout?service=${shiro.loginUrl}
+  successUrl: ${shiro.casClientUrl}${adminPath}/index
 #
 #  # 简单 SSO 登录相关配置
 #  sso:

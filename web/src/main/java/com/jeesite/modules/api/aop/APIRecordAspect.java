@@ -84,10 +84,14 @@ public class APIRecordAspect {
         apiLogService.save(apilog);
         ApiLogTotal apiLogTotal = new ApiLogTotal();
         apiLogTotal.setInDate(getNowDate());
-        apiLogTotal = isExistOne(apiLogTotal);
         apiLogTotal.setApiCode(controller+"."+method);
+        apiLogTotal = isExistOne(apiLogTotal);
         apiLogTotal.setApiName(apiRecord.name());
-        apiLogTotal.setSuccessCount(1L);
+        long count=0L;
+        if( apiLogTotal.getSuccessCount()!=null){
+            count = apiLogTotal.getSuccessCount();
+        }
+        apiLogTotal.setSuccessCount(count+1);
         apiLogTotalService.save(apiLogTotal);
 
 
@@ -100,9 +104,7 @@ public class APIRecordAspect {
      */
     private ApiLogTotal isExistOne(ApiLogTotal source){
 
-        ApiLogTotal condition = new ApiLogTotal();
-        condition.setInDate(getNowDate());
-        List<ApiLogTotal> apiLogTotalList = apiLogTotalService.findList(condition);
+        List<ApiLogTotal> apiLogTotalList = apiLogTotalService.findList(source);
         ApiLogTotal result = new ApiLogTotal();
         if(apiLogTotalList.size()>0){
             result = apiLogTotalList.get(0);
@@ -126,4 +128,6 @@ public class APIRecordAspect {
         }
         return date;
     }
+
+
 }

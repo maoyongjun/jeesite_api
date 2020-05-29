@@ -16,7 +16,7 @@ import com.jeesite.modules.api.dao.ApiLogTotalDao;
 /**
  * api访问次数统计表Service
  * @author myj
- * @version 2020-05-28
+ * @version 2020-05-29
  */
 @Service
 @Transactional(readOnly=true)
